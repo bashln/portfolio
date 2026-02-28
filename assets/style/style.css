@@ -143,11 +143,15 @@ a:focus-visible {
 }
 
 @media (min-width: 901px) {
-  body {
+  html,
+  body,
+  .content {
     scrollbar-width: none;
   }
-  body::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  .content::-webkit-scrollbar {
+    display: none;
   }
 }
