@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const terminalBlocks = document.querySelectorAll(".terminal-block");
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   const speedPerChar = 0.04;
   const blockFadeInDuration = 0.5;
   const typemeBuffer = 0.5;
@@ -39,7 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(
       () => {
-        block.scrollIntoView({ behavior: "smooth", block: "end" });
+        block.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth",
+          block: "end",
+        });
       },
       currentDelay * 1000 - 500,
     );

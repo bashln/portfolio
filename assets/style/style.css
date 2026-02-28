@@ -15,8 +15,6 @@
   --cyberdream-purple: #bd5eff;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
-
 * {
   background-color: transparent;
   font-family: "DM Mono", monospace;
@@ -30,7 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-  background-image: url("https://gitlab.com/leonamsh/dotfiles/-/raw/main/.config/wezterm/assets/bg-blurred.png?ref_type=heads");
+  background-image: url("../images/bg-blurred.png");
   background-color: var(--cyberdream-bg);
   background-size: cover;
   background-attachment: fixed;
@@ -67,11 +65,13 @@ footer {
   color: var(--cyberdream-purple);
 }
 
-.linkedin:hover {
+.linkedin:hover,
+.twitter:hover {
   color: var(--cyberdream-red);
 }
 
-.bluesky:hover {
+.bluesky:hover,
+.mastodon:hover {
   color: var(--cyberdream-blue);
 }
 
@@ -163,5 +163,15 @@ footer {
 @media (min-width: 600px) {
   body {
     font-size: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  html:focus-within {
+    scroll-behavior: auto;
   }
 }
