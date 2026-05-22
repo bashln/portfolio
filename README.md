@@ -1,4 +1,4 @@
-# paesmont portfolio
+# leonamduarte portfolio
 
 Minimal, single-page portfolio with a split layout and Catppuccin Mocha palette.
 
@@ -18,5 +18,5 @@ python -m http.server
 Open `http://localhost:8000`.
 
 ## Links
-- GitHub: https://github.com/paesmont
+- GitHub: https://github.com/leonamduarte
 - Email: mailto:lpdmonteiro@gmail.com
