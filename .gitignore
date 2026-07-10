@@ -12,3 +12,7 @@ logs
 *.njsproj
 *.sln
 *.sw?
+
+# Local tooling / agent artifacts
+.claude/
+.playwright-mcp/

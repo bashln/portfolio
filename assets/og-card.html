@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OG Card</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;1,9..144,200&family=JetBrains+Mono:wght@400;500&family=Figtree:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+
+      body {
+        position: relative;
+        background-color: #121110;
+        color: #ddd3be;
+        font-family: 'Figtree', system-ui, sans-serif;
+        font-weight: 300;
+        padding: 96px 110px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      /* Ambient glow — same as live site */
+      body::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 65% 55% at 18% 48%,
+          rgba(175, 115, 55, 0.07) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      /* Grain overlay */
+      body::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        pointer-events: none;
+      }
+
+      .frame {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+      }
+
+      .mark {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 17px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #4e4740;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .mark::after {
+        content: '';
+        display: block;
+        width: 56px;
+        height: 1px;
+        background: rgba(218, 200, 165, 0.13);
+      }
+
+      h1 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-weight: 200;
+        font-style: italic;
+        font-size: 168px;
+        line-height: 0.95;
+        letter-spacing: -0.025em;
+        color: #ddd3be;
+      }
+
+      .tagline {
+        font-size: 30px;
+        line-height: 1.45;
+        color: #897d6c;
+        max-width: 30ch;
+      }
+
+      .stack {
+        display: flex;
+        gap: 22px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 18px;
+        letter-spacing: 0.04em;
+        color: #4e4740;
+      }
+
+      .stack span:not(:last-child)::after {
+        content: ' ·';
+        margin-left: 22px;
+        color: #3a3530;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <p class="mark">PORTFOLIO</p>
+      <h1>bashln</h1>
+      <p class="tagline">
+        Desenvolvedor focado em sistemas simples, claros e bem construídos.
+      </p>
+      <p class="stack">
+        <span>JavaScript</span><span>React</span><span>TypeScript</span><span>Go</span><span>Lua</span><span>Linux</span>
+      </p>
+    </div>
+  </body>
+</html>

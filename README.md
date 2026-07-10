@@ -1,15 +1,17 @@
-# leonamduarte portfolio
+# bashln portfolio
 
-Minimal, single-page portfolio with a split layout and Catppuccin Mocha palette.
+Minimal, single-page portfolio with a split layout and a warm graphite palette. Bilingual content (PT-BR / EN).
 
 ## Overview
-- Sticky left column with profile, stack, and links
+- Sticky left column with profile, stack, links, and language toggle
 - Right column with About, Projects, and Focus
-- No build step or client-side scripts required
+- Language preference persisted in `localStorage`; honors `prefers-reduced-motion`
+- No build step
 
 ## Stack
 - HTML
 - CSS
+- Vanilla JavaScript (language toggle)
 
 ## Run locally
 ```bash
@@ -18,5 +20,5 @@ python -m http.server
 Open `http://localhost:8000`.
 
 ## Links
-- GitHub: https://github.com/leonamduarte
-- Email: mailto:lpdmonteiro@gmail.com
+- GitHub: https://github.com/bashln
+- Email: lpdmonteiro@gmail.com

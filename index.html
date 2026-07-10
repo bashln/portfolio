@@ -1,105 +1,317 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Minimal split-layout portfolio for bashln with projects and contact."
+      content="bashln — desenvolvedor focado em sistemas simples, claros e bem construídos."
     />
-    <title>bashln | Portfolio</title>
+    <meta name="theme-color" content="#121110" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="https://bashln.github.io/portfolio/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="bashln" />
+    <meta
+      property="og:description"
+      content="Desenvolvedor focado em sistemas simples, claros e bem construídos."
+    />
+    <meta property="og:url" content="https://bashln.github.io/portfolio/" />
+    <meta
+      property="og:image"
+      content="https://bashln.github.io/portfolio/assets/images/og.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="bashln — portfolio" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>bashln</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "bashln",
+        "url": "https://bashln.github.io/portfolio/",
+        "email": "lpdmonteiro@gmail.com",
+        "jobTitle": "Desenvolvedor",
+        "description": "Desenvolvedor focado em sistemas simples, claros e bem construídos.",
+        "sameAs": ["https://github.com/bashln"]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;1,9..144,200&family=JetBrains+Mono:wght@400;500&family=Figtree:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/style/style.css" />
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="assets/images/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/images/android-chrome-512x512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/apple-touch-icon.png"
+    />
   </head>
   <body>
     <div class="layout">
       <aside class="sidebar">
-        <h1>bashln</h1>
-        <p class="tagline">
-          Full-stack developer focused on clean architecture and secure systems.
-        </p>
-        <p class="stack">
-          JavaScript • React • Node • PostgreSQL • Go • Linux
-        </p>
-        <nav class="links" aria-label="Primary">
-          <a
-            href="https://github.com/bashln"
-            rel="noopener noreferrer"
-            target="_blank"
+        <div class="sidebar-inner">
+          <header class="identity">
+            <h1>bashln</h1>
+            <p
+              class="tagline"
+              data-pt="Desenvolvedor focado em sistemas simples, claros e bem construídos."
+              data-en="Developer focused on simple, clear, and well-built systems."
+            >
+              Desenvolvedor focado em sistemas simples, claros e bem construídos.
+            </p>
+          </header>
+
+          <p class="stack">
+            <span>JavaScript</span><span>React</span><span>Node</span
+            ><span>TypeScript</span><span>Go</span><span>Lua</span
+            ><span>Linux</span>
+          </p>
+
+          <nav
+            class="links"
+            aria-label="Principal"
+            data-aria-pt="Principal"
+            data-aria-en="Primary"
           >
-            GitHub
-          </a>
-          <a href="mailto:lpdmonteiro@gmail.com">Email</a>
-        </nav>
+            <a
+              href="https://github.com/bashln"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span>GitHub</span>
+              <span class="link-arrow">↗</span>
+            </a>
+            <a href="mailto:lpdmonteiro@gmail.com">
+              <span>Email</span>
+              <span class="link-arrow">→</span>
+            </a>
+          </nav>
+
+          <footer class="meta-row">
+            <span class="year">2026</span>
+            <div
+              class="lang-toggle"
+              role="group"
+              aria-label="Idioma / Language"
+            >
+              <button type="button" data-lang="pt" aria-current="true">
+                PT
+              </button>
+              <span class="lang-sep" aria-hidden="true">/</span>
+              <button type="button" data-lang="en">EN</button>
+            </div>
+          </footer>
+        </div>
       </aside>
 
       <main class="content">
         <section class="section">
-          <h2>About</h2>
-          <p>
-            I build minimal, reliable systems with clear structure and
-            predictable behavior.
+          <h2 data-pt="Sobre" data-en="About">Sobre</h2>
+          <p
+            data-pt="Gosto de Linux, terminais limpos e software simples."
+            data-en="I like Linux, clean terminals, and simple software."
+          >
+            Gosto de Linux, terminais limpos e software simples.
           </p>
-          <p>
-            My background in Linux and tooling shapes how I design interfaces
-            and services.
+          <p
+            data-pt="Comecei com scripts e configurações; hoje construo aplicações completas — do banco até a interface."
+            data-en="I started with scripts and configs; today I build full applications — from database to interface."
+          >
+            Comecei com scripts e configurações; hoje construo aplicações
+            completas — do banco até a interface.
           </p>
-          <p>Clarity over abstraction, always.</p>
+          <p
+            data-pt="Clareza antes de adicionar camadas."
+            data-en="Clarity before adding layers."
+          >
+            Clareza antes de adicionar camadas.
+          </p>
         </section>
 
         <section class="section">
-          <h2>Projects</h2>
+          <h2 data-pt="Projetos" data-en="Projects">Projetos</h2>
           <ul class="projects">
-            <li>
+            <li class="project">
               <div class="project-head">
                 <a
-                  href="https://github.com/bashln/projeto-mercado"
+                  href="https://github.com/bashln/MeuGasto"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  Market Control
+                  MeuGasto
                 </a>
-                <span class="project-stack">React • Supabase • TypeScript</span>
+                <span class="project-stack"
+                  >React Native · TypeScript · Supabase</span
+                >
               </div>
-              <p>
-                Personal expense and price comparison system built for daily
-                use.
+              <p
+                data-pt="Aplicativo mobile para controle de gastos e organização de compras, com integração NFC-e."
+                data-en="Mobile app for expense tracking and shopping organization, with NFC-e receipt integration."
+              >
+                Aplicativo mobile para controle de gastos e organização de
+                compras, com integração NFC-e.
               </p>
             </li>
-            <li>
+            <li class="project">
               <div class="project-head">
                 <a
                   href="https://github.com/bashln/pomotui"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  Pomotui
+                  pomotui
                 </a>
-                <span class="project-stack">Go • TUI</span>
+                <span class="project-stack">Go · Bubble Tea · Lip Gloss</span>
               </div>
-              <p>Terminal-based Pomodoro tracker focused on speed and zero noise.</p>
+              <p
+                data-pt="Pomodoro para o terminal em Go, com presets, auto-advance e contadores por sessão."
+                data-en="A Pomodoro TUI in Go, with presets, auto-advance, and per-session counters."
+              >
+                Pomodoro para o terminal em Go, com presets, auto-advance e
+                contadores por sessão.
+              </p>
             </li>
-            <li>
+            <li class="project">
+              <div class="project-head">
+                <a
+                  href="https://github.com/bashln/matteblack"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  matteblack
+                </a>
+                <span class="project-stack">Lua · Neovim · WezTerm</span>
+              </div>
+              <p
+                data-pt="Tema escuro e fosco para Neovim e WezTerm — calmo, com baixo contraste e foco em longas sessões."
+                data-en="A dark, matte theme for Neovim and WezTerm — calm, low-contrast, built for long sessions."
+              >
+                Tema escuro e fosco para Neovim e WezTerm — calmo, com baixo
+                contraste e foco em longas sessões.
+              </p>
+            </li>
+            <li class="project">
               <div class="project-head">
                 <a
                   href="https://github.com/bashln/dotfiles"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  Dotfiles
+                  dotfiles
                 </a>
-                <span class="project-stack">Linux • Shell • Neovim</span>
+                <span class="project-stack"
+                  >Hyprland · Neovim · Doom Emacs</span
+                >
               </div>
-              <p>Minimal dev environment tuned for productivity and stability.</p>
+              <p
+                data-pt="Configurações pessoais de Linux gerenciadas com chezmoi: window managers, terminais e editores."
+                data-en="Personal Linux configs managed with chezmoi: window managers, terminals, and editors."
+              >
+                Configurações pessoais de Linux gerenciadas com chezmoi: window
+                managers, terminais e editores.
+              </p>
             </li>
           </ul>
         </section>
 
         <section class="section">
-          <h2>Focus</h2>
-          <p>Current focus: performance, clean architecture, developer tooling.</p>
+          <h2 data-pt="Foco" data-en="Focus">Foco</h2>
+          <p
+            data-pt="Atualmente: performance, arquitetura limpa e ferramentas de terminal."
+            data-en="Current focus: performance, clean architecture, and terminal tooling."
+          >
+            Atualmente: performance, arquitetura limpa e ferramentas de
+            terminal.
+          </p>
         </section>
       </main>
     </div>
+
+    <div class="grain" aria-hidden="true"></div>
+
+    <script>
+      (function () {
+        var KEY = 'bashln-lang';
+        var html = document.documentElement;
+        var saved = null;
+        try {
+          saved = localStorage.getItem(KEY);
+        } catch (_) {}
+        var initial = saved === 'en' || saved === 'pt' ? saved : 'pt';
+        apply(initial);
+
+        document
+          .querySelectorAll('.lang-toggle button')
+          .forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              apply(btn.dataset.lang);
+            });
+          });
+
+        function apply(lang) {
+          html.setAttribute('lang', lang === 'pt' ? 'pt-br' : 'en');
+          try {
+            localStorage.setItem(KEY, lang);
+          } catch (_) {}
+
+          document
+            .querySelectorAll('[data-pt][data-en]')
+            .forEach(function (el) {
+              el.textContent = el.dataset[lang];
+            });
+
+          document
+            .querySelectorAll('[data-aria-pt][data-aria-en]')
+            .forEach(function (el) {
+              el.setAttribute(
+                'aria-label',
+                lang === 'pt' ? el.dataset.ariaPt : el.dataset.ariaEn
+              );
+            });
+
+          document
+            .querySelectorAll('.lang-toggle button')
+            .forEach(function (btn) {
+              if (btn.dataset.lang === lang) {
+                btn.setAttribute('aria-current', 'true');
+              } else {
+                btn.removeAttribute('aria-current');
+              }
+            });
+        }
+      })();
+    </script>
   </body>
 </html>
