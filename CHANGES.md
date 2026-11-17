@@ -301,3 +301,47 @@ Página agora cabe em todos os tamanhos comuns de laptop (1366×768, 1440×900, 
 
 ### Estado final
 Branch pronta para commit/PR. CHANGES.md documenta 9 entradas.
+
+---
+
+## Iteração 10 — 2026-11-17 (reposicionamento para busca de vaga)
+
+Contexto: fim de ciclo na empresa atual, objetivo é usar a página para conseguir
+vaga Júnior (Full Stack ou Frontend), remoto ou híbrido/presencial em Caxias do Sul.
+
+### Conteúdo (index.html)
+- Status de disponibilidade no topo da sidebar, com `@bashln` e stack primária separada.
+- Sobre reescrito: ADS em andamento + experiência em sistemas de produção.
+- Experiência substitui "Foco" e descreve o trabalho real: ordens de conserto,
+  integração recebimento → assistência → expedição, widgets e consultas Oracle,
+  testes automatizados em JavaScript.
+- Projetos: entram tcg-colecao e ecorota (badge Pré-alpha); matteblack e dotfiles
+  descem para uma nota de rodapé; stacks corrigidas (MeuGasto é Kotlin/Compose, não React Native).
+- Nova seção final "Formação & Contato".
+- `sameAs`/meta/JSON-LD atualizados com LinkedIn e X.
+- Botão "Copiar" e-mail com fallback e `aria-live`, toggle PT/EN persistido.
+
+### CSS (assets/style/style.css)
+- Estilos para os elementos novos: status dot, role line, grupos de stack,
+  linha de e-mail + botão copiar, bloco de experiência, badge de projeto e nota.
+- Contraste: `--text-mid` #897d6c → #a89b86 (4.68 → 6.91) e `--text-dim`
+  #4e4740 → #8a8074 (2.07 → 4.87). Todos os textos pequenos passam WCAG AA.
+- Botões e links de projeto com alvo ≥24px; `focus-visible` no copiar.
+- Scrollbar fina visível no desktop (conteúdo agora excede 900px; esconder
+  scrollbar escondia que havia mais conteúdo).
+- `prefers-reduced-motion` também desliga o pulso do status dot.
+
+### Validação
+| Checagem | Resultado |
+|---|---|
+| Overflow horizontal 320–1920px | nenhum |
+| Toggle EN → textos, title, description, aria-label | ok, persiste após reload |
+| Botão copiar | "Copiado ✓" + live region |
+| Erros de console | nenhum |
+| Tags HTML balanceadas | ok |
+
+### Pendente (precisa de decisão do usuário)
+1. Período e empresa na experiência (hoje só "Sistemas em produção").
+2. CV em PDF para download — principal CTA que falta.
+3. Nenhum projeto web/Go API em destaque, apesar do posicionamento Full Stack/Frontend.
+4. `og.png` ainda com a copy antiga ("focado em sistemas simples").
