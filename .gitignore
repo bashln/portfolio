@@ -2,11 +2,29 @@
 logs
 *.log
 
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
@@ -16,3 +34,6 @@ logs
 # Local tooling / agent artifacts
 .claude/
 .playwright-mcp/
+.audit/
+test-results/
+playwright-report/
