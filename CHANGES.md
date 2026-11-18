@@ -345,3 +345,81 @@ vaga Júnior (Full Stack ou Frontend), remoto ou híbrido/presencial em Caxias d
 2. CV em PDF para download — principal CTA que falta.
 3. Nenhum projeto web/Go API em destaque, apesar do posicionamento Full Stack/Frontend.
 4. `og.png` ainda com a copy antiga ("focado em sistemas simples").
+
+---
+
+## Iteração 11 — 2026-11-17 (vitrine técnica: auditoria, CI e README)
+
+### Auditoria
+- Varredura de segredos no Working Tree e em todo o histórico (`git log -p`, 14 arquivos
+  históricos): nenhuma chave, token, DSN, senha, IP interno ou `.env` jamais comitado.
+- `.gitignore` passou a cobrir `.env*` (com exceção de `.env.example`), `node_modules/`,
+  `dist/`, `build/`, `coverage/`, bancos locais (`*.db`, `*.sqlite*`), `Thumbs.db` e
+  artefatos de teste.
+- E-mail e perfis sociais permanecem: são contato público intencional do portfólio.
+
+### Verificação
+- `html-validate@9` sobre `index.html` e `assets/og-card.html`, configurado em
+  `.htmlvalidate.json` (`void-style` e `doctype-style` desligados: formatação é do Prettier).
+- `scripts/check-assets.mjs` resolve todos os `href`/`src`/`url()` locais e falha em
+  referência quebrada. Testado com caminho inválido (exit 1) e com o estado atual (exit 0).
+- `make check` encadeia os dois; `.github/workflows/ci.yml` roda o mesmo em push/PR.
+
+### Correções vindas do lint
+- `aria-label="Stack"` em `<div>` sem role → `role="group"`, para que leitores de tela
+  realmente anunciem o agrupamento.
+- `&` cru em texto (`Desenvolvimento & Automação`, `Formação & Contato`) → `&amp;`.
+
+### Documentação
+- `README.md` reescrito: problema resolvido, decisões técnicas reais, instalação em um
+  comando, tabela de comportamentos observáveis, limites da verificação.
+- `analysis.md` sincronizado com o estado atual (números de linha, JS de i18n, CI, riscos).
+
+---
+
+## Iteração 12 — 2026-11-18 (verificação de i18n e imagens sincronizadas)
+
+### Verificação nova
+- **`scripts/check-i18n.mjs`** (76 linhas): exige o gêmeo preenchido para todo
+  atributo `data-*-pt`/`data-*-en`. Uma tabela `PAIRS` é a única fonte de verdade,
+  então um sufixo novo (`data-copied-*`) não pede bloco de código novo. Saída aponta
+  `arquivo:linha` do atributo e diferencia valor vazio de atributo ausente.
+- **`Makefile`**: alvo `i18n`; `check` passou a rodar `lint`, `assets` e `i18n`.
+- **`.github/workflows/ci.yml`**: step `Check translation pairs` depois de assets.
+
+### Imagens
+- **`assets/og-card.html`**: copy alinhada ao posicionamento atual ("Do banco SQL à
+  interface, ferramentas para sistemas em produção") e stack corrigida (Go,
+  JavaScript, TypeScript, Vue, React, SQL / Oracle). Ganhou
+  `<meta name="robots" content="noindex">`, fechando a pendência de indexação.
+- **`assets/images/og.png`** regerada a partir do card, em 1200×630, 599KB.
+- **`docs/screenshots/`**: desktop 1280×1300 e mobile 390×844, em JPEG (160KB e 35KB).
+  O PNG equivalente do desktop tinha 1,07MB por causa da textura de grain, então a
+  conversão foi por tamanho, não por gosto.
+
+### README
+- Placeholders `TODO screenshot` trocados pelas imagens reais.
+- `make i18n` documentado, estrutura atualizada com `docs/` e os dois checkers.
+- Comando de regeração das três imagens (Chrome headless por viewport).
+- Afirmação de "cabe sem scroll" corrigida: media o overflow e o número real entrou
+  no lugar.
+
+### Medições de overflow (2026-11-18)
+
+| Viewport | scrollHeight | overflowY |
+|---|---|---|
+| 1920×1080 | 1293 | 213 |
+| 1440×900 | 1293 | 393 |
+| 1366×768 | 1183 | 415 |
+| 1280×800 | 1183 | 383 |
+| 390×844 | 2280 | 1436 |
+
+Nenhum overflow horizontal em nenhum tamanho (`scrollWidth` 10px menor que
+`innerWidth` por causa da scrollbar).
+
+### Validação
+- `node scripts/check-i18n.mjs`: 26 elementos traduzíveis, exit 0.
+- Fixture quebrada: `data-en` vazio em `<h2>Sobre</h2>` → `index.html:224: data-pt sem
+  data-en (valor vazio)`, exit 1; arquivo restaurado com md5 idêntico.
+- `make check`: exit 0 (html-validate, assets 7 caminhos, i18n 26 elementos).
+- Asset `og.png` conferido em 1200×630 por leitura do header PNG.
