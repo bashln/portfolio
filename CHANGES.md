@@ -423,3 +423,41 @@ Nenhum overflow horizontal em nenhum tamanho (`scrollWidth` 10px menor que
   data-en (valor vazio)`, exit 1; arquivo restaurado com md5 idêntico.
 - `make check`: exit 0 (html-validate, assets 7 caminhos, i18n 26 elementos).
 - Asset `og.png` conferido em 1200×630 por leitura do header PNG.
+
+---
+
+## Iteração 11 — 2026-11-19 (conversão A + credibilidade B)
+
+### CV e contato
+- `assets/cv/leonam-duarte-cv-dev-jr-2026.pdf` adicionado (cópia do CV enviado).
+- Botão "Baixar CV" na sidebar e no fecho, com atributo `download` e rótulo PT/EN.
+- Fecho virou bloco de contato real: e-mail (mailto) e LinkedIn, além do CV.
+- Formação detalhada: ADS (2º semestre), Full Stack Jr. 260h (Codifica+ / +praTi, 11/2025) e Técnico em Eletrônica (SENAI).
+
+### Experiência
+- Empresa e período: Inova Sistemas Eletrônicos, 04/2022 — 11/2026.
+- Bullets reescritas com escopo real: automação de ordens em Go, integração de 3 setores, widgets/consultas Oracle, testes em JavaScript, backup offsite com GPG e causa-raiz em hardware/firmware.
+- "Histórico anterior" compacto: Saluto (2021–2022), Vertex (2017–2021) e Inova (2014–2016).
+
+### Projetos
+- Novo card "Lista de Presentes" (React/Web, Pix QR), marcado como privado por não ter repositório público.
+- pomotui desce para a nota de utilitários, junto de matteblack e dotfiles.
+- Stack do site alinhada ao CV: sai Vue, entram React Native, Node.js e Docker.
+
+### Metadados
+- `description`, `og:description`, JSON-LD (`knowsAbout` + `hasCredential`) e textos do JS atualizados.
+- `og.png` regerado a partir de `og-card.html` com a nova copy (nome, cargo e disponibilidade).
+
+### Validação
+| Checagem | Resultado |
+|---|---|
+| 46 nós traduzíveis com par PT/EN, sem vazio ou divergência | ok |
+| Overflow horizontal 320–1920px | nenhum |
+| Links locais (CV, CSS, og.png) servidos por HTTP | 200 |
+| Erros de console | nenhum |
+| Tags HTML balanceadas | ok |
+| `og.png` 1200×630 | ok |
+
+### Pendente
+1. Link ou demo pública da Lista de Presentes (hoje "Privado").
+2. Print stylesheet e self-host das fontes.

@@ -2,7 +2,6 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta name="robots" content="noindex" />
     <title>OG Card</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;1,9..144,200&family=JetBrains+Mono:wght@400;500&family=Figtree:wght@300;400&display=swap"
@@ -23,10 +22,9 @@
         color: #ddd3be;
         font-family: 'Figtree', system-ui, sans-serif;
         font-weight: 300;
-        padding: 96px 110px;
+        padding: 84px 96px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
       }
 
       /* Ambient glow — same as live site */
@@ -58,15 +56,15 @@
         z-index: 1;
         display: flex;
         flex-direction: column;
-        gap: 36px;
+        height: 100%;
       }
 
       .mark {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 17px;
+        font-size: 15px;
         letter-spacing: 0.22em;
         text-transform: uppercase;
-        color: #4e4740;
+        color: #8a8074;
         display: flex;
         align-items: center;
         gap: 14px;
@@ -80,49 +78,95 @@
         background: rgba(218, 200, 165, 0.13);
       }
 
+      .status {
+        margin-left: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        color: #c4925a;
+      }
+
+      .status::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #8fae72;
+        box-shadow: 0 0 0 5px rgba(143, 174, 114, 0.14);
+      }
+
       h1 {
+        margin-top: 54px;
         font-family: 'Fraunces', Georgia, serif;
         font-weight: 200;
         font-style: italic;
-        font-size: 168px;
-        line-height: 0.95;
+        font-size: 112px;
+        line-height: 1.02;
         letter-spacing: -0.025em;
         color: #ddd3be;
       }
 
-      .tagline {
-        font-size: 30px;
-        line-height: 1.45;
-        color: #897d6c;
-        max-width: 30ch;
+      .role {
+        margin-top: 18px;
+        font-size: 31px;
+        font-weight: 300;
+        color: #a89b86;
+      }
+
+      .role span {
+        color: #c4925a;
       }
 
       .stack {
+        margin-top: auto;
         display: flex;
-        gap: 22px;
+        flex-wrap: wrap;
+        gap: 0 20px;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 18px;
+        font-size: 17px;
         letter-spacing: 0.04em;
-        color: #4e4740;
+        color: #8a8074;
       }
 
       .stack span:not(:last-child)::after {
-        content: ' ·';
-        margin-left: 22px;
-        color: #3a3530;
+        content: '·';
+        margin-left: 20px;
+        color: #5d564d;
+      }
+
+      .foot {
+        margin-top: 34px;
+        padding-top: 26px;
+        border-top: 1px solid rgba(218, 200, 165, 0.09);
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 15px;
+        letter-spacing: 0.05em;
+        color: #8a8074;
+      }
+
+      .foot .url {
+        color: #c4925a;
       }
     </style>
   </head>
   <body>
     <div class="frame">
-      <p class="mark">PORTFOLIO</p>
-      <h1>bashln</h1>
-      <p class="tagline">
-        Do banco SQL à interface, ferramentas para sistemas em produção.
-      </p>
+      <p class="mark">PORTFOLIO<span class="status">ABERTO A OPORTUNIDADES</span></p>
+      <h1>Leonam Duarte</h1>
+      <p class="role"><span>@bashln</span> · Desenvolvedor Júnior Full Stack / Frontend</p>
       <p class="stack">
-        <span>Go</span><span>JavaScript</span><span>TypeScript</span><span>Vue</span><span>React</span><span>SQL / Oracle</span>
+        <span>Go</span><span>JavaScript</span><span>TypeScript</span
+        ><span>React</span><span>SQL Oracle</span><span>Linux</span>
       </p>
+      <div class="foot">
+        <span>Caxias do Sul - RS · Remoto ou híbrido</span>
+        <span class="url">bashln.github.io/portfolio</span>
+      </div>
     </div>
   </body>
 </html>
