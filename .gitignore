@@ -37,3 +37,6 @@ Thumbs.db
 .audit/
 test-results/
 playwright-report/
+
+# Artefatos movidos em vez de deletados
+trash/
