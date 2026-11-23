@@ -6,22 +6,24 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-f7df1e?logo=javascript&logoColor=black)](#)
 [![Dependencies](https://img.shields.io/badge/runtime%20dependencies-0-brightgreen)](#)
 
+Acesse em [bashln.github.io/portfolio](https://bashln.github.io/portfolio/).
+
 Página pessoal estática, bilíngue e sem build step. Funciona como currículo técnico navegável, com CV em PDF para download. Quem abre entende o perfil, a stack e os projetos em poucos segundos, e alterna entre português e inglês sem recarregar.
 
 ## Visão geral e problema resolvido
 
-Currículo em PDF e perfil de rede social não mostram como a pessoa escreve código. Este repositório resolve isso sendo, ele mesmo, a amostra. É uma página única que carrega em qualquer hospedagem estática, mantém o conteúdo em HTML semântico, implementa i18n PT-BR/EN em ~130 linhas de JavaScript vanilla, preserva acessibilidade (contraste WCAG AA, alvos de toque de pelo menos 24px, `prefers-reduced-motion`) e não exige `npm install`, bundler nem servidor para rodar. O valor prático é duplo. O recrutador tem uma vitrine rápida e verificável, e o autor tem um artefato que não apodrece por dependência desatualizada.
+Currículo em PDF e perfil de rede social não mostram como a pessoa escreve código. Este repositório resolve isso sendo, ele mesmo, a amostra. É uma página única que carrega em qualquer hospedagem estática, mantém o conteúdo em HTML semântico, implementa i18n PT-BR/EN em ~130 linhas de JavaScript vanilla, preserva acessibilidade com contraste WCAG AA, alvos de toque de pelo menos 24px e `prefers-reduced-motion`, e não exige `npm install`, bundler nem servidor para rodar. O valor prático é duplo. O recrutador tem uma vitrine rápida e verificável, e o autor tem um artefato que não apodrece por dependência desatualizada.
 
 ## Arquitetura e decisões técnicas
 
 - **Zero dependências de runtime.** Um `index.html`, um stylesheet e um script inline. Nenhum framework, bundler ou pacote instalado, e o deploy é copiar arquivos. A única dependência de desenvolvimento é `html-validate`, chamado via `npx` com a major fixada no `Makefile`.
 - **Duas colunas com uma única quebra estrutural.** O layout usa CSS Grid (`minmax(240px, 37%)` / `minmax(0, 63%)`) com a sidebar em `position: sticky` e `height: 100vh`. Abaixo de 860px a grade colapsa para uma coluna e a sidebar vira bloco estático. É um breakpoint real, não uma escada de media queries.
-- **Compressão vertical por altura de viewport.** Media queries em `max-height: 820px` e `760px` reduzem paddings, gaps e margens. Medição em 2026-11-19: `scrollHeight` de 1805px em 1440×900 e 1696px em 1366×768. O conteúdo cresceu com a experiência e o fecho de contato, então a página rola; as media queries só reduzem o desperdício.
+- **Compressão vertical por altura de viewport.** Media queries em `max-height: 820px` e `760px` reduzem paddings, gaps e margens. Em 2026-11-19, o `scrollHeight` era de 1805px em 1440×900 e 1696px em 1366×768. O conteúdo cresceu com a experiência e o fecho de contato, então a página rola; as media queries só reduzem o desperdício.
 - **Design tokens em CSS custom properties.** Cores, bordas e famílias tipográficas vivem em `:root`, e os componentes consomem variáveis em vez de valores literais. Os tons de texto secundário atingem contraste WCAG AA no tamanho usado, e todo alvo interativo tem `:focus-visible`.
 - **i18n por atributos de dados, sem biblioteca.** Cada nó traduzível carrega `data-pt`/`data-en`, e um único `apply(lang)` percorre o DOM ajustando `textContent`, `<html lang>`, `<title>` e `meta[name=description]`. O mesmo mecanismo cobre atributos acessíveis via `data-aria-pt`/`data-aria-en`, o que evita o clássico `aria-label` fixo em inglês numa página em português.
 - **Preferência persistida com degradação segura.** O idioma vem de `?lang=`, depois de `localStorage`, depois do padrão `pt`. Todas as leituras e escritas de storage e de `URLSearchParams` estão em `try/catch`. Com storage bloqueado ou em modo privado, a página cai no padrão em vez de quebrar.
 - **Clipboard com caminho de fallback.** O botão de copiar e-mail usa `navigator.clipboard.writeText` quando disponível. Se a API faltar ou a permissão for recusada, ele usa `document.execCommand('copy')` sobre um `textarea` temporário. O retorno é anunciado por uma região `aria-live="polite"`, então leitor de tela também percebe a cópia.
-- **Acessibilidade como requisito, não enfeite.** Landmarks semânticos (`aside`, `main`, `section`, `nav`), `role="group"` no agrupamento de stack, ícones decorativos com `aria-hidden`, scrollbar fina para sinalizar conteúdo excedente e `@media (prefers-reduced-motion: reduce)` desligando a animação de entrada e o pulso do indicador de disponibilidade.
+- **Acessibilidade como requisito, não enfeite.** Landmarks semânticos `aside`, `main`, `section` e `nav`, `role="group"` no agrupamento de stack, ícones decorativos com `aria-hidden`, scrollbar fina para sinalizar conteúdo excedente e `@media (prefers-reduced-motion: reduce)` desligando a animação de entrada e o pulso do indicador de disponibilidade.
 - **SEO e compartilhamento declarados no `<head>`.** `canonical`, Open Graph com imagem 1200×630, `twitter:card=summary_large_image`, JSON-LD `schema.org/Person`, `theme-color`/`color-scheme` e a suíte completa de favicons. A imagem social sai de `assets/og-card.html`, versionado como fonte.
 - **Verificação automatizada proporcional ao risco.** Um site estático não quebra por lógica. Ele quebra por HTML inválido, por referência de asset quebrada e por tradução pela metade. O `Makefile` roda `html-validate`, `scripts/check-assets.mjs` e `scripts/check-i18n.mjs`. Os três rodam no CI a cada push e pull request.
 
@@ -46,7 +48,7 @@ Currículo em PDF e perfil de rede social não mostram como a pessoa escreve có
 
 ## Pré-requisitos e instalação rápida
 
-Requisitos: `git`, `python3` (servidor estático) e `make` com `node` 20 ou superior para rodar as verificações. Não é necessário instalar dependências do projeto.
+Requisitos: `git`, `python3` para o servidor estático e `make` com `node` 20 ou superior para rodar as verificações. Não é necessário instalar dependências do projeto.
 
 ```bash
 git clone https://github.com/bashln/portfolio.git
@@ -61,7 +63,7 @@ Sem `make`:
 python3 -m http.server 8000
 ```
 
-Rodar as verificações (o mesmo conjunto que o CI executa):
+Para rodar o mesmo conjunto de verificações que o CI executa:
 
 ```bash
 make check            # lint + assets + i18n
